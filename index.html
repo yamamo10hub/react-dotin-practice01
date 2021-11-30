@@ -15,17 +15,25 @@
     <script type="text/babel">
     (() => {
         function Counter(props) {
-            return <div>0 {props.color}</div>;
+            function countUp(e, color) {
+                e.preventDefault();
+                alert(color);
+            }
+            return (
+                <li style={{backgroundColor:props.color}}>
+                    <a href="#" onClick={e => countUp(e, props.color)}>
+                        0
+                    </a>
+                </li>
+            );
         }
         ReactDOM.render(
-            // <div class="box">
-            // <div style={{width:100, height:100, backgroundColor:'tomato'}}>
-            //<div style={{width:100, height:100, backgroundColor:'tomato'}} onClick={showMessage} >
-            //</div>
-            <div>
+            <div className="container">
+                <ul>
                 <Counter color="tomato"/>
                 <Counter color="skyblue"/>
                 <Counter color="limegreen"/>
+                </ul>
             </div>
             ,document.getElementById('root')
         );
